@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Mi app de correos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Nuevo correo</h1>
+
+<input id="to" placeholder="Destinatario"><br><br>
+<input id="subject" placeholder="Asunto"><br><br>
+<textarea id="body" placeholder="Mensaje"></textarea><br><br>
+<input type="datetime-local" id="date"><br><br>
+
+<button id="save">Programar correo</button>
+
+<script>
+  document.getElementById('save').onclick = async () => {
+    const data = {
+      to: to.value,
+      subject: subject.value,
+      body: body.value,
+      date: date.value
+    };
+
+    await window.api.saveEmail(data);
+    alert('Correo programado ⏰');
+  };
+</script>
+</body>
+</html>
